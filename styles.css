@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.nav {
+    height: 2rem;
+    width: auto;
+}
+
+.status {
+    display:flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+.square {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 2rem;
+}
+
+.board {
+    display: grid;
+    width: min-content;
+    height: min-content;
+    grid-template-columns: repeat(10, min-content);
+    grid-template-rows: repeat(10, min-content);
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.player-container {
+    display:flex;
+    justify-content: center;
+}
+
+.player-title {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0rem;
+}
