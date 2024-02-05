@@ -20,7 +20,7 @@ class Gameboard {
     placeShip(coord, length, vertical) {
         if (coord[1] + length > this.length || coord[0] + length > this.length || coord[0] < 0 || 
             coord[0] > this.length || coord[1] < 0 || coord[1] > this.length ||
-             this.board[coord[1]][coord[0]] != null) {
+             this.board[coord[1]][coord[0]] != null || this.checkCollide(coord,length,vertical)) {
             return false;
         }
         if (!vertical) {
@@ -37,10 +37,24 @@ class Gameboard {
         this.ships++;
         return true;
     }
-
+    checkCollide(coord, length, vertical) {
+        if(!vertical) {
+            for(let i = 0; i < length; i++) {
+                if(this.board[coord[1]][i + coord[0]] != null) {
+                    return true;
+                }
+            }
+        } else {
+            for (let i = 0; i < length; i++) {
+               if(this.board[i+coord[1]][coord[0]] != null){
+                return true;
+               }
+            }
+        }
+        return false;
+    }
     recieveAttack(coord) {
-        if (this.board[coord[1]][coord[0]] instanceof Ship && !this.hits.has(coord.toString()) && 
-        !this.missed.has(coord.toString())) {
+        if (this.board[coord[1]][coord[0]] instanceof Ship && !this.hits.has(coord.toString()) && !this.missed.has(coord.toString())) {
             let ship = this.board[coord[1]][coord[0]];
             ship.hit();
             this.hits.add(coord.toString());
