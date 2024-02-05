@@ -119,7 +119,7 @@ const domController = (function () {
                     div.dataset.player = 1;
                 }
                 //&& player.name != players[1].name
-                if (player.gameboard.board[i][j] != null) {
+                if (player.gameboard.board[i][j] != null && player.name != players[0].name) {
                     div.classList.add('ship');
                 }
 
